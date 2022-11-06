@@ -1,0 +1,69 @@
+version: '3.4'
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.39.1
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - projeto-jmeter      
+  
+  grafana:
+    image: grafana/grafana:7.4.1
+    container_name: grafana
+    ports:
+      - 3000:3000
+    networks:
+      - projeto-jmeter 
+    volumes:
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - grafana-data:/var/lib/grafana
+  
+  db:
+    container_name: mysql8.2
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - 3306:3306
+    networks:
+      -  projeto-jmeter  
+    volumes:
+      - './docker/db/data:/var/lib/mysql'
+      - './docker/db/my.cnf:/etc/mysql/conf.d/my.cnf'
+      - './docker/db/sql:/docker-entrypoint-initdb.d'
+  
+  eureka-server:
+    image: jessebezerra/eureka-server:1.0.0
+    ports:
+      - 8761:8761
+    networks:
+      -  projeto-jmeter
+
+  gateway-api:
+    image: jessebezerra/gateway-api:1.0.2
+    depends_on:
+      - eureka-server
+    ports:
+      - 8765:8765    
+    environment:
+      - EUREKA_URL=http://eureka-server:8761/eureka
+    networks:
+      - projeto-jmeter             
+
+      
+
+networks:
+  projeto-jmeter:
+    driver: bridge  
+volumes:
+  dbdata:
+  grafana-data:  

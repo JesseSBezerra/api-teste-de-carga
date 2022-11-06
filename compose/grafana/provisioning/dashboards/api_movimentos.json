@@ -1,0 +1,348 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_count{job=\"movimento-api\", method=\"POST\",uri=\"/api/movimento\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "Criar Movimento"
+        }
+      ],
+      "title": "Inclusão de Movimentos",
+      "type": "gauge"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_count{job=\"movimento-api\", method=\"GET\", uri=\"/api/movimento/{id}\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "Consulta de Movimentos"
+        }
+      ],
+      "title": "Consulta De Movimentos",
+      "type": "gauge"
+    },
+    {
+       "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "blue",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "id": 6,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_count{job=\"movimento-api\", method=\"PUT\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Atualização de Movimentos",
+      "type": "gauge"
+    },
+    {
+       "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "id": 8,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "\r\nhttp_server_requests_seconds_count{job=\"movimento-api\", method=\"DELETE\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "Deleção de Movimentos"
+        }
+      ],
+      "title": "Deleção de Movimentos",
+      "type": "gauge"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 10,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_max{job=\"movimento-api\", method=\"POST\",uri=\"/api/movimento\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "Tempo Maximo de Resposta para Inclusão"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{job=\"movimento-api\", method=\"GET\",uri=\"/api/movimento/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "Tempo Maximo de Consulta"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{job=\"movimento-api\", method=\"PUT\",uri=\"/api/movimento/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "Tempo Maximo De Atualizacao"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{job=\"movimento-api\", method=\"DELETE\",uri=\"/api/movimento/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "Tempo Maximo de Requisicao para Delete"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Time de Resposta",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Estatiticas Da Api de Movimentos",
+  "uid": "mgyU2Dv4k",
+  "version": 3
+}
