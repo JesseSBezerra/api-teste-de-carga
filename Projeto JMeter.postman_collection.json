@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "0f63c2df-dc1e-4d9c-a85c-9a2f4f81f6ce",
+		"name": "Projeto JMeter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Movimento",
+			"item": [
+				{
+					"name": "Incluir Movimento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cdSequencialMovimento\":1234,\r\n  \"dtMovimento\": \"2022-11-01T19:32:35\",\r\n  \"qtMovimento\":10,\r\n  \"dsTpMovimento\": \"S\",\r\n  \"nmResposavelRecebimento\":\"Jessé dos Santos Bezerra\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/movimento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"movimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Todos Movimentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/movimento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"movimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/movimento/1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"movimento",
+								"1234"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Movimento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"dtMovimento\": \"2022-11-05T11:32:35\",\r\n        \"qtMovimento\": 2,\r\n        \"dsTpMovimento\": \"S\",\r\n        \"nmResposavelRecebimento\": \"Jessé dos Santos \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/movimento/1235",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"movimento",
+								"1235"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Movimento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/movimento/1235",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"movimento",
+								"1235"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actuator",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
